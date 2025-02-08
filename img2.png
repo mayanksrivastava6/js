@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>An In-Depth Look at Different Types of B.Tech Programs</title>
+        <script id="tailwindCdn" src="https://cdn.tailwindcss.com"></script>
+        <script id="tailwindConfig">
+            function rem2px(input, fontSize = 16) {
+                if (input == null) {
+                    return input;
+                }
+                switch (typeof input) {
+                    case "object":
+                        if (Array.isArray(input)) {
+                            return input.map((val) => rem2px(val, fontSize));
+                        } else {
+                            const ret = {};
+                            for (const key in input) {
+                                ret[key] = rem2px(input[key]);
+                            }
+                            return ret;
+                        }
+                    case "string":
+                        return input.replace(
+                            /(\d*\.?\d+)rem$/,
+                            (_, val) => parseFloat(val) * fontSize + "px"
+                        );
+                    default:
+                        return input;
+                }
+            }
+            const defaultWidth = {
+                auto: 'auto',
+                '1/2': '50%',
+                '1/3': '33.333333%',
+                '2/3': '66.666667%',
+                '1/4': '25%',
+                '2/4': '50%',
+                '3/4': '75%',
+                '1/5': '20%',
+                '2/5': '40%',
+                '3/5': '60%',
+                '4/5': '80%',
+                '1/6': '16.666667%',
+                '2/6': '33.333333%',
+                '3/6': '50%',
+                '4/6': '66.666667%',
+                '5/6': '83.333333%',
+                '1/12': '8.333333%',
+                '2/12': '16.666667%',
+                '3/12': '25%',
+                '4/12': '33.333333%',
+                '5/12': '41.666667%',
+                '6/12': '50%',
+                '7/12': '58.333333%',
+                '8/12': '66.666667%',
+                '9/12': '75%',
+                '10/12': '83.333333%',
+                '11/12': '91.666667%',
+                full: '100%',
+                screen: '100vw',
+                svw: '100svw',
+                lvw: '100lvw',
+                dvw: '100dvw',
+                min: 'min-content',
+                max: 'max-content',
+                fit: 'fit-content',
+            }
+            const defaultMaxWidth = {
+                none: 'none',
+                xs: '20rem',
+                sm: '24rem',
+                md: '28rem',
+                lg: '32rem',
+                xl: '36rem',
+                '2xl': '42rem',
+                '3xl': '48rem',
+                '4xl': '56rem',
+                '5xl': '64rem',
+                '6xl': '72rem',
+                '7xl': '80rem',
+                full: '100%',
+                min: 'min-content',
+                max: 'max-content',
+                fit: 'fit-content',
+                prose: '65ch',
+            }
+            const rem2pxTheme = {
+                fontSize: rem2px(tailwind.defaultTheme.fontSize),
+                spacing: rem2px(tailwind.defaultTheme.spacing),
+                width: { ...rem2px(tailwind.defaultTheme.spacing), ...rem2px(defaultMaxWidth) },
+                maxWidth: { ...rem2px(tailwind.defaultTheme.spacing), ...rem2px(defaultMaxWidth) },
+            }
+
+            tailwind.config = {
+                corePlugins: {
+                    preflight: false,
+                },
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#A91D54",
+                            secondary: "#222222",
+                            "brand-red": "#A91D54",
+                            "brand-gray": "#F3F3F3",
+                            "brand-light-gray": "#FBFBFF",
+                            "brand-light-pink": "#FFF1F1",
+                        }
+                    },
+                    ...rem2pxTheme
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="/blog/assets/built/screen.css?v=f1d7979183">
+        <style id="cssOverride">
+            header *,
+            footer * {
+                margin: 0;
+                padding: 0;
+            }
+
+            header *,
+            footer * {
+                box-sizing: border-box;
+                border-width: 0;
+                border-style: solid;
+                border-color: #e5e7eb;
+            }
+
+            footer * {
+                color: white;
+            }
+
+            button {
+                border: 0;
+                background-color: unset;
+            }
+
+            a:hover {
+                opacity: 1;
+            }
+
+            li::marker {
+                content: '';
+            }
+
+            details > summary {
+                list-style: none;
+            }
+
+            details > summary::-webkit-details-marker {
+                display: none;
+            }
+
+            @media (min-width: 1024px) {
+                .gh-main {
+                    padding-top: 12rem;
+                }
+            }
+
+            .gh-main {
+                padding-top: 10rem;
+            }
+        </style>
+        <style>
+            .card-side {
+                padding: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 10px;
+                position: -webkit-sticky;
+                position: sticky;
+                height: 100% !important;
+            }
+
+            @media (min-width: 1024px) {
+                .post-content {
+                    width: 75%;
+                }
+            }
+
+            .post-content {
+                width: 100%;
+            }
+
+            @media (min-width: 1024px) {
+                .card-side {
+                    top: 12rem;
+                }
+            }
+
+            .card-side {
+                top: 10rem;
+            }
+
+            .float {
+                position: fixed;
+                width: auto;
+                padding: 2rem;
+                bottom: 40px;
+                right: 40px;
+                background-color: #a91d54;
+                color: #FFF;
+                border-radius: 50px;
+                text-align: center;
+                box-shadow: 2px 2px 3px #717171;
+            }
+
+            .my-float {
+                margin-top: 22px;
+            }
+
+            /* Container for flexboxes */
+            .row {
+                display: flex;
+                justify-content: space-between;
+                padding: 3rem;
+                width: 100%;
+            }
+
+            /* Create four equal columns */
+
+
+            /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+                .row {
+                    flex-direction: column;
+                }
+            }
+        </style>
+            <link rel="icon" href="https://blog.itmlive.in/blog/content/images/size/w256h256/2024/04/ITM-LOGO-ICON.png" type="image/png">
+    <link rel="canonical" href="https://www.itm.ac.in/blog/an-in-depth-look-at-different-types-of-btech-programs/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="ITM Vocational University Blogs">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="An In-Depth Look at Different Types of B.Tech Programs">
+    <meta property="og:description" content="Are you a self-proclaimed tech enthusiast? Do you dream of coding the next groundbreaking app, designing the latest gadget, or building the world&#x27;s most advanced robot? If you&#x27;re nodding your head in excitement, then a Bachelor of Technology (B.Tech) program might just be the perfect fit for you! But">
+    <meta property="og:url" content="https://www.itm.ac.in/blog/an-in-depth-look-at-different-types-of-btech-programs/">
+    <meta property="og:image" content="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp">
+    <meta property="article:published_time" content="2024-05-13T13:12:20.000Z">
+    <meta property="article:modified_time" content="2024-06-11T06:56:06.000Z">
+    <meta property="article:tag" content="b tech">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="An In-Depth Look at Different Types of B.Tech Programs">
+    <meta name="twitter:description" content="Are you a self-proclaimed tech enthusiast? Do you dream of coding the next groundbreaking app, designing the latest gadget, or building the world&#x27;s most advanced robot? If you&#x27;re nodding your head in excitement, then a Bachelor of Technology (B.Tech) program might just be the perfect fit for you! But">
+    <meta name="twitter:url" content="https://www.itm.ac.in/blog/an-in-depth-look-at-different-types-of-btech-programs/">
+    <meta name="twitter:image" content="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Rams">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="b tech">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="848">
+    <meta property="og:image:height" content="477">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "ITM Vocational University Blogs",
+        "url": "https://blog.itmlive.in/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.itmlive.in/blog/content/images/2024/04/itmvu-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rams",
+        "url": "https://blog.itmlive.in/blog/author/rams/",
+        "sameAs": []
+    },
+    "headline": "An In-Depth Look at Different Types of B.Tech Programs",
+    "url": "https://blog.itmlive.in/blog/an-in-depth-look-at-different-types-of-btech-programs/",
+    "datePublished": "2024-05-13T13:12:20.000Z",
+    "dateModified": "2024-06-11T06:56:06.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp",
+        "width": 848,
+        "height": 477
+    },
+    "keywords": "b tech",
+    "description": "Are you a self-proclaimed tech enthusiast? Do you dream of coding the next groundbreaking app, designing the latest gadget, or building the world&#x27;s most advanced robot? If you&#x27;re nodding your head in excitement, then a Bachelor of Technology (B.Tech) program might just be the perfect fit for you! But wait, before you dive into the world of B.Tech, let&#x27;s take a hilarious and light-hearted look at the different types of B.Tech programs that are out there. From quirky engineering disciplines to cut",
+    "mainEntityOfPage": "https://blog.itmlive.in/blog/an-in-depth-look-at-different-types-of-btech-programs/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.81">
+    <link rel="alternate" type="application/rss+xml" title="ITM Vocational University Blogs" href="https://blog.itmlive.in/blog/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="dbcec6c214adcc4d0a35323568" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.itmlive.in/blog/" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.itmlive.in/blog/webmentions/receive/" rel="webmention">
+    <script defer src="/blog/public/cards.min.js?v=f1d7979183"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=f1d7979183">
+    
+<link rel="stylesheet" href="style1.css">
+<style>
+  .program a svg{
+    rotate: 0deg;
+}
+.program:hover a svg{
+    rotate: 180deg;
+}
+.program:hover .program-list {
+    display: flex;
+    background: white;
+}
+.program:hover .program-list li:hover a svg{
+    rotate: 0deg;
+}
+
+.program:hover .program-list li:hover .program-list-items {
+    display: flex;
+    background: white;
+}
+.program:hover .program-list li:hover .program-list-items li:hover a svg{
+    rotate: 180deg;
+
+}
+.program:hover .program-list li:hover .program-list-items li:hover .program-list-items-value {
+    display: flex;
+    background: white;
+}
+.mobile-program-details summary span svg{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-program-details[open] summary span svg{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-program-details[open] div ul li .mobile-occupation-details summary span svg{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-program-details[open] div ul li .mobile-occupation-details[open] summary span svg{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-program-details[open] div ul li .mobile-occupation-details div ul li .mobile-specilazation-details summary span svg{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-program-details[open] div ul li .mobile-occupation-details[open] div ul li .mobile-specilazation-details[open] summary span svg{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+</style>
+
+<script src="https://itm.ac.in/header1.js"></script><style>:root {--ghost-accent-color: #a91d54;}</style>
+    </head>
+
+    <body class="post-template tag-b-tech is-head-stacked has-serif-body">
+        <div class="gh-site">
+            <div id="header-container" class="w-full flex"></div>
+
+            <main class="gh-main">
+        <div id="postView" class="row">
+            <article class="column gh-article post-content post tag-b-tech">
+                <header class="gh-article-header gh-canvas">
+                        <script>window.tag = {"id":"663b8388fc2a917ab7bea2ed","name":"b tech","slug":"b-tech","description":null,"feature_image":null,"visibility":"public","og_image":null,"og_title":null,"og_description":null,"twitter_image":null,"twitter_title":null,"twitter_description":null,"meta_title":null,"meta_description":null,"codeinjection_head":null,"codeinjection_foot":null,"canonical_url":null,"accent_color":null,"url":"https://blog.itmlive.in/blog/tag/b-tech/"};</script>
+                        <a class="gh-article-tag" href="https://blog.itmlive.in/blog/tag/b-tech/">b tech</a>
+
+                    <h1 class="gh-article-title">An In-Depth Look at Different Types of B.Tech Programs</h1>
+                    <div class="gh-article-meta pt-4">
+                        <div class="gh-article-meta-inner">
+                                <p class="">
+                                    <a href="/blog/author/rams/">Rams</a>
+                                </p>
+                                
+                            <span class="gh-article-meta-sep"></span>
+                            <time class="gh-article-date" datetime=" 2024-05-13">May 13, 2024</time>
+                                <span class="gh-article-meta-sep"></span>
+                                <span class="gh-article-length">4 min</span>
+                        </div>
+                    </div>
+
+
+
+                        <figure class="gh-article-image">
+        <img
+            srcset="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp 300w,
+                    https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp 720w,
+                    https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp 960w,
+                    https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp 1200w,
+                    https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp 2000w"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--1--14.webp"
+            alt="An In-Depth Look at Different Types of B.Tech Programs"
+        >
+    </figure>
+                </header>
+                <section class="gh-content gh-canvas">
+                    <div id="post-table-of-contents" max-depth="h4"></div>
+                    <p>Are you a self-proclaimed tech enthusiast? Do you dream of coding the next groundbreaking app, designing the latest gadget, or building the world's most advanced robot? If you're nodding your head in excitement, then a Bachelor of Technology (B.Tech) program might just be the perfect fit for you! But wait, before you dive into the world of B.Tech, let's take a hilarious and light-hearted look at the different types of B.Tech programs that are out there. From quirky engineering disciplines to cutting-edge specializations, get ready to unleash the geek in you!<br><br><strong>The Classic Computer Science B.Tech</strong><br>Ah, the classic computer science B.Tech program, where coding is king and debugging is a way of life. This program is perfect for aspiring software developers, system architects, and IT wizards. You'll spend countless hours honing your programming skills, learning different programming languages, and mastering algorithms. Be prepared to tackle complex software development projects, create jaw-dropping websites and geek out with fellow coders over the latest tech trends.<br><br><strong>The Marvelous Mechanical Engineering B.Tech</strong><br>If you're passionate about designing machines and bringing them to life, then mechanical engineering is the way to go. From creating innovative automotive systems to building cutting-edge robots, this B.Tech program is all about applying principles of physics and materials science to the real world. You'll learn how to analyze and design mechanical systems, get hands-on experience with CAD/CAM tools, and become a pro at prototyping and testing. Plus, you'll have endless opportunities to impress your friends with your engineering prowess by explaining the inner workings of everyday objects in a way that will make their heads spin!<br><br><strong>The Electrifying Electrical Engineering B.Tech</strong><br>Want to be the master of all things electrical? Look no further than the electrical engineering B.Tech program. Get ready to dive into the world of circuits, electromagnetism, and power systems. You'll learn how to design and optimize electrical systems, work with high-voltage equipment (safety goggles and lab coat required!), and troubleshoot complex electrical problems. And if you've always wondered how electricity is generated, transmitted, and distributed, this program will have you sparking with excitement!<br><br><strong>The Whimsical Biomedical Engineering B.Tech</strong></p><p><br>Calling all science geeks with a passion for healthcare! The biomedical engineering B.Tech program is where technology meets medicine. You'll learn how to design and develop medical devices, such as prosthetics, pacemakers, and imaging equipment. You'll dive into the world of biological systems, learn about biomaterials, and even explore topics like tissue engineering and regenerative medicine. Get ready to geek out with your lab coat on, conducting experiments, and dreaming up creative solutions to real-world health challenges. Just remember to keep your stethoscope handy for those impromptu "doctor" moments!<br></p><h3 id="the-quirky-aerospace-engineering-btech"><br><strong>The Quirky Aerospace Engineering B.Tech</strong></h3><p><br>Do you dream of exploring the final frontier? Then buckle up and get ready for takeoff with the aerospace engineering B.Tech program. This program is all about designing, building, and testing aircraft and spacecraft. You'll learn about aerodynamics, propulsion systems, and space exploration technologies. You'll geek out over the history of flight, from the Wright brothers to the latest advancements in space travel. And who knows, maybe one day you'll be designing the next generation of rockets to explore the far reaches of the universe!</p><h3 id="the-cutting-edge-artificial-intelligence-and-machine-learning-btech"><br><strong>The Cutting-Edge Artificial Intelligence and Machine Learning B.Tech</strong></h3><p><br>Are you fascinated by the world of artificial intelligence (AI) and machine learning (ML)? Then this B.Tech program is tailor-made for you! You'll delve into the world of data science, algorithms, and statistical modeling. You'll learn how to develop AI-powered systems, create machine learning algorithms, and analyze complex data sets. Get ready to geek out with your fellow AI and ML enthusiasts, brainstorming about how to create the next AI-powered robot or revolutionize industries with intelligent automation. And who knows, maybe you'll even invent the next Siri or Alexa!<br><br><strong>The Sustainable Energy Engineering B.Tech</strong></p><p><br>If you're passionate about sustainability and want to make a difference in the world through innovative engineering, then the sustainable energy engineering B.Tech program is for you. You'll learn about renewable energy sources, energy efficiency, and green technologies. You'll explore topics like solar energy, wind power, and biofuels, and learn how to design and implement sustainable energy systems. Get ready to geek out with your fellow eco-warriors, brainstorming ideas for creating a greener future and combating climate change.<br><br><strong>The Quizzical Food Technology B.Tech</strong><br>Yes, you read that right! Food technology is a quirky and fascinating field of engineering that focuses on the science and technology of food production, processing, and preservation. You'll learn about food safety, quality control, and sensory evaluation. You'll explore topics like food packaging, food chemistry, and food microbiology. And who knows, maybe you'll even invent the next breakthrough in food processing or create the next trendy food product that goes viral on social media!</p><h3 id="conclusion"><br><strong>Conclusion.</strong></h3><p><br>In conclusion, B.Tech programs offer a wide range of exciting and diverse options for aspiring engineers and tech enthusiasts. From classic computer science and mechanical engineering to cutting-edge AI and ML, sustainable energy engineering, and even quirky fields like food technology, there's something for everyone. So, embrace your inner geek, explore the different types of B.Tech programs, and find the one that best aligns with your interests and career goals. Get ready to embark on an exhilarating journey of learning, experimentation, and innovation in the world of technology and engineering. And remember, a little humor and quirkiness can go a long way in making your B.Tech experience truly memorable! So, gear up, put on your thinking cap, and get ready to geek out in the world of B.Tech!</p>
+                </section>
+
+            </article>
+        </div>
+
+
+
+                <div class="gh-read-next gh-canvas">
+                <section class="gh-pagehead">
+                    <h4 class="gh-pagehead-title">Read next</h4>
+                </section>
+
+                <div class="gh-topic gh-topic-grid">
+                    <div class="gh-topic-content">
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/blog/choosing-the-best-course-in-engineering-a-detailed-overview/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp 300w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp 720w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp 960w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp 1200w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--6.webp"
+                    alt="Choosing the Best Course in Engineering: A Detailed Overview"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">Choosing the Best Course in Engineering: A Detailed Overview</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">Engineering is a highly sought-after field that offers various opportunities for personal and professional growth. However, with so many different types of engineering courses available, it can be challenging to choose the right one. In this article, we will provide you with a detailed overview of how to choose the</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Akash Laxman Lakade</span>
+                <time class="gh-card-date" datetime="2024-05-13">May 13, 2024</time>
+            </footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post">
+    <a class="gh-card-link" href="/blog/why-pursue-a-b-tech-engineering-degree-in-india-advantages-unique-features-and-placement-opportunities/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp 300w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp 720w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp 960w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp 1200w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--5.webp"
+                    alt="Why Pursue a B.Tech Engineering Degree in India? Advantages, Unique Features, and Placement opportunities"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">Why Pursue a B.Tech Engineering Degree in India? Advantages, Unique Features, and Placement opportunities</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">Are you contemplating pursuing an engineering degree in India? If yes, you are on the right track. India is known for producing exceptional engineers who excel in various fields worldwide. It is one of the most sought-after destinations for engineering aspirants, and there are various reasons why.
+
+In this article,</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Akash Laxman Lakade</span>
+                <time class="gh-card-date" datetime="2024-05-13">May 13, 2024</time>
+            </footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post">
+    <a class="gh-card-link" href="/blog/exploring-the-best-courses-in-engineering-which-one-will-you-choose/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp 300w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp 720w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp 960w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp 1200w,
+                            https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="https://cdn.itm.ac.in/2024/05/tech-jobs-in-India--6--4.webp"
+                    alt="Exploring the Best Courses in Engineering: Which One Will You Choose?"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">Exploring the Best Courses in Engineering: Which One Will You Choose?</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">Engineering has long been a popular career choice for Indian students due to its vast opportunities, intellectual challenges, and societal impact. With numerous engineering disciplines available, choosing the right course can be a daunting task. This comprehensive guide aims to shed light on some of the best engineering courses in</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Akash Laxman Lakade</span>
+                <time class="gh-card-date" datetime="2024-05-13">May 13, 2024</time>
+            </footer>
+        </div>
+    </a>
+</article>                    </div>
+                </div>
+            </div>
+
+        
+    <script id="sideFormScript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var primaryTagValue = window.tag?.name;
+            if (primaryTagValue) {
+                const widgetId = window.widgetIds[primaryTagValue]
+                if (widgetId) {
+                    const npfForm = document.createElement("div");
+                    npfForm.id = "npfForm";
+                    npfForm.className = "column card-side";
+                    npfForm.style = "width: 25%";
+                    npfForm.innerHTML = `<div class="npf_wgts" data-height="520px" data-w="${widgetId}"></div>`;
+
+                    const scriptExists = document.querySelector("#npfScript")
+                    if (scriptExists) 
+                        document.body.removeChild(scriptExists);
+
+                    const npfScript = document.createElement("script");
+                    npfScript.id = "npfScript";
+                    npfScript.type = "text/javascript";
+                    npfScript.async = true;
+                    npfScript.src = "https://widgets.nopaperforms.com/emwgts.js";
+
+                    document.querySelector("#postView").appendChild(npfForm);
+                    document.body.appendChild(npfScript);
+                }
+            }
+        });
+
+    </script>
+</main>
+            <button id="enrollNow" type="button"
+                class="fixed hidden md:bottom-4 bottom-0 md:right-4 right-0 left-0 md:left-auto md:rounded-full text-center bg-brand-red px-4 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Enroll Now
+            </button>
+
+
+        </div>
+
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script src="/blog/assets/built/main.min.js?v=f1d7979183"></script>
+        <script src="https://cdn.popupsmart.com/bundle.js" data-id="851224" async defer></script>
+
+        <!-- Table of Contents -->
+
+        <script id="tableOfContents">
+            const tocContainer = document.getElementById("post-table-of-contents")
+            let tableOfContents = ""
+
+            if (tocContainer) {
+                const maxDepth = tocContainer.getAttribute("max-depth")
+                let headingNodes;
+
+                switch (maxDepth) {
+                    case "h2":
+                        headingNodes = ".gh-content h2"
+                        break;
+                    case "h3":
+                        headingNodes = ".gh-content h2, .gh-content h3"
+                        break;
+                    case "h4":
+                        headingNodes = ".gh-content h2, .gh-content h3, .gh-content h4"
+                        break;
+                    case "h5":
+                        headingNodes = ".gh-content h2, .gh-content h3, .gh-content h4, .gh-content h5"
+                        break;
+                    case "h6":
+                        headingNodes = ".gh-content h2, .gh-content h3, .gh-content h4, .gh-content h5, .gh-content h6"
+                        break;
+                    default:
+                        headingNodes = ".gh-content h2"
+                        break;
+                }
+                const headings = document.querySelectorAll(headingNodes)
+                headings.forEach((link) => {
+                    const id = link.getAttribute("id")
+                    const text = link.textContent
+                    tableOfContents += `
+            <li class="post-toc-list__item post-toc-list__item--${link.nodeName.toLowerCase()}">
+                <a href="#${id}" style="text-decoration: none;" class="post-toc-list__link">${text}</a>
+            </li>
+        `
+                }
+                )
+
+                tocContainer.classList.add("post-toc")
+                //console.log("Headlings in Post", headings)
+                if (headings.length) {
+                    tocContainer.innerHTML = `
+        <div class="kg-card kg-callout-card kg-callout-card-accent">
+            <div class="kg-callout-emoji">💡</div>
+            <div class="kg-callout-text">Table of Contents<br>
+                <ol>
+                    ${tableOfContents}
+                </ol>
+            </div>
+        </div>
+    `
+                }
+
+
+            }
+        </script>
+
+        <script id="dialogScript">
+            // Declare dialog outside the function to make it accessible globally
+            let dialog;
+
+            // Create and append the modal elements
+            function createModal(widgetId) {
+                // If dialog already exists, just update the iframe source
+
+                // If dialog doesn't exist, create it
+                dialog = document.createElement("div");
+                dialog.id = "dialog";
+                dialog.className = "relative z-20";
+                dialog.innerHTML = `
+	<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+	<div class="fixed inset-0 z-30 w-screen overflow-y-auto">
+		<div class="flex min-h-full items-end justify-center p-4 text-center items-center p-0">
+			<div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-full max-w-sm">
+				<button type="button" class="absolute top-4 right-4 bg-white rounded-md p-1 text-black" id="close">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+					</svg>
+				</button>
+
+				<div class="npf_wgts" data-height="520px" data-w="${widgetId}"></div>
+			</div>
+		</div>
+	</div>`;
+
+                const scriptExists = document.querySelector("#npfScript")
+                if (scriptExists) 
+                    document.body.removeChild(scriptExists);
+
+                const npfScript = document.createElement("script");
+                npfScript.id = "npfScript";
+                npfScript.type = "text/javascript";
+                npfScript.async = true;
+                npfScript.src = "https://widgets.nopaperforms.com/emwgts.js";
+
+                // Append elements to the body
+                document.body.appendChild(dialog);
+                document.body.appendChild(npfScript);
+
+                // Close modal functionality
+                const closeButton = dialog.querySelector("#close");
+                closeButton.addEventListener("click", function () {
+                    document.body.removeChild(dialog);
+                });
+            }
+
+            // Event listener for the button
+            document.addEventListener("DOMContentLoaded", function () {
+                const enrollNowButton = document.getElementById("enrollNow");
+                enrollNowButton.classList.remove("block");
+                enrollNowButton.classList.add("hidden");
+                const primaryTagValue = window.tag?.name;
+                if (primaryTagValue) {
+                    const widgetId = window.widgetIds[primaryTagValue]
+                    if (widgetId) {
+                        enrollNowButton.classList.remove("hidden");
+                        enrollNowButton.classList.add("block")
+                        enrollNowButton.addEventListener("click", function () {
+                            createModal(widgetId);
+                            dialog.classList.remove("hidden");
+                        });
+                    }
+                }
+            });
+
+        </script>
+
+        <script id="widgetIds">
+  window.widgetIds = {
+    "all":"fce92580c010e5c9863c790bd21db6be",
+    "bba":"bb775afdb55cd20023438e90e64c5604",
+    "b ihtm":"22badc38155aa698f5b25d68db4f0faa",
+    "b optometry":"bb9f3e89d95672586d31fedde70b9ae1",
+    "bsc industrial chemistry":"52d9212d3f421f16823b770205eca2e9",
+    "bsc medical lab technology":"5b6434a8c269889c00b84fe78feeeed3",
+    "b tech":"a956ea200c22bf8c3cc0eb3540e11712",
+    "Engineering":"a956ea200c22bf8c3cc0eb3540e11712",
+    "mba":"1bcf69ac5d4f84cb469b1d109b1b6afd",
+    "msc industrial chemistry":"f6c4ff59ed9a4014c3104e990d6e2ffb",
+    "msc medical lab technology":"45eef3483a60de9145c2512267a48214",
+    
+  }
+</script>
+
+<div id="footer-container"></div>
+
+<script src="https://itm.ac.in/footer1.js"></script>
+
+    </body>
+
+</html>

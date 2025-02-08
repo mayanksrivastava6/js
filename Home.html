@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Blog</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="script1.js" defer></script> 
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo1.jpg" alt="Bootcamp Logo">
+            <h2>Bootcamp Blog</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Blogs.html">Published Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Carousel -->
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="img1.png" style="width:100%" >
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="img1.png" style="width:100%" >
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="img1.png" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+    </div>
+    <br>
+        
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+
+    <!-- List of Blogs -->
+    <section class="blog-list">
+        <div class="blog-card">
+            <div class="thumbnail">
+                <img src="thumb.png" alt="Thumbnail" />
+            </div>
+            <p class="category">Java</p>
+            <h3>Post title</h3>
+            <p>Jan 23</p>
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="Blogs.html">Continue reading</a>
+        </div>
+
+        <div class="blog-card">
+            <div class="thumbnail">
+                <img src="thumb.png" alt="Thumbnail" />
+            </div>
+            <p class="category">AEM</p>
+            <h3>Post title</h3>
+            <p>May 19</p>
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="Blogs.html">Continue reading</a>
+        </div>
+
+        <div class="blog-card">
+            <div class="thumbnail">
+                <img src="thumb.png" alt="Thumbnail" />
+            </div>
+            <p class="category">JS</p>
+            <h3>Post title</h3>
+            <p>Nov 11</p>
+            <p>This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="Blogs.html">Continue reading</a>
+        </div>
+    </section>
+    <a href="#top">Back to top</a>
+    <!-- Footer -->
+    <footer>
+        <br>
+        <p>HomePage Blogs</p>
+        <p>© 2022 - 2023 TTN Bootcamp. All rights reserved.</p>
+    </footer>
+</body>
+</html>
